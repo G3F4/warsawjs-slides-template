@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>WarsawJS Slides: Template</title>
+    <title>GraphQL in a nutshell</title>
 
     <meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -14,13 +14,39 @@
     <!-- Prism.js -->
     <link rel="stylesheet" href="vendors/prism/prism.css"/>
     <link rel="stylesheet" href="vendors/prism/custom-prism.css"/>
+    <style type="text/css">
+        .wrap {
+            width:100%;
+            margin:0 auto;
+            height: 70%;
+        }
+        .left_col {
+            float:left;
+            width:50%;
+            height: 100%;
+        }
+        .right_col {
+            float:right;
+            width:50%;
+            height: 100%;
+            border-left: medium solid #eee;
+        }
+        .no_border {
+            border: none;
+            padding-left: 20px;
+        }
+        .slide .shout {
+            font-size: 140px;
+        }
+    </style>
 </head>
 <body class="shower list">
     <header class="caption">
-        <h1>WarsawJS Slides: Template</h1>
+        <h1>GraphQL in a nutshell</h1>
         <p>We talk about JavaScript. Each month in Warsaw, Poland.</p>
     </header>
 
+    <!-- SLIDE #1 -->
     <section class="slide front-page">
         <div class="logo">
             <!-- Logo WarsawJS -->
@@ -31,293 +57,1133 @@
             <img src="pictures/fake-speaker-avatar.jpg" alt="Speaker"/>
 
             <!-- 2. Speaker -->
-            <h2>Speaker name</h2>
+            <h2>Kamil Grabek</h2>
 
             <!-- 3. Presentation title -->
-            <h2><strong>"WarsawJS Slides: Template"</strong></h2>
+            <h2><strong>"GraphQL in a nutshell"</strong></h2>
 
             <!-- 4. Presentation date -->
-            <h2>XXXX-XX-XX</h2>
+            <h2>2016-11-09</h2>
 
             <!-- 5. Contact the speaker -->
-            <h2><a href="http://twitter.com/speaker">@speaker</a></h2>
+            <h2>kamil.grabek@gmail.com</h2>
         </div>
     </section>
 
-    <section class="slide">
-        <h2>Please update slides:</h2>
-        <ul>
-            <li>rename project at <mark>GitHub</mark> with snake-case convention</li>
-            <li><mark>description</mark> and <mark>link</mark> on GitHub repository profile</li>
-            <li>link to <mark>"Fork me on GitHub"</mark> on the bottom of document</li>
-            <li>setup presentation title in
-                <ul>
-                    <li><mark>&lt;title&gt;</mark> tag on the top of document in <mark>&lt;head&gt;</mark> tag</li>
-                    <li><mark>README.md</mark> file</li>
-                    <li><mark>&lt;h1&gt;</mark> tag at <mark>&lt;header&gt;</mark> tag on the top of document</li>
-                </ul>
-            </li>
+    <!-- SLIDE #2 -->
+    <section class="slide" itemscope itemtype="http://schema.org/Person">
+        <div>
+            <h2>Who am I?</h2>
+
+            <h3 itemprop="jobTitle">Front-end developer</h3>
+
+            <p itemscope itemtype="https://schema.org/Organization">
+                <span itemprop="name">Bluesoft</span>,
+                <span itemprop="location">Warsaw</span>
+            </p>
+
+            <p>
+                <span itemprop="knows">Tech freak, sci-fi lover, astro maniac.</span><br/>
+            </p>
+
+            <p class="note">"Kiedy życie zaskoczy, pytam co ma dla mnie jeszcze"</p>
+        </div>
+    </section>
+
+    <!-- SLIDE #3 -->
+    <section class="slide prism">
+        <h2 class="shout">GraphQL in a nutshell</h2>
+    </section>
+
+    <!-- SLIDE #4 -->
+    <section class="slide prism">
+        <h2>What GraphQL is <b>NOT</b></h2>
+        <h3 class="next">DATABASE</h3>
+        <h3 class="next">QUERY LANGUAGE FOR DATABASE</h3>
+        <h3 class="next">LIBRARY</h3>
+        <h3 class="next">LANGUAGE SPECIFIC</h3>
+        <p class="next">EXAMPLES</p>
+    </section>
+
+    <!-- SLIDE #5 -->
+    <section class="slide prism">
+        <h2>What GraphQL <b>is</b></h2>
+        <h3 class="next">IDEA</h3>
+        <h3 class="next">QUERY LANGUAGE FOR APPLICATION</h3>
+        <h3 class="next">LAYER BETWEEN CLIENT AND SERVER</h3>
+        <h3 class="next">TYPE SYSTEM</h3>
+    </section>
+
+    <!-- SLIDE #6 -->
+    <section class="slide prism">
+        <h2>Why GraphQL <b>on</b> WarsawJS</h2>
+        <h3 class="next">REFERENCE IMPLEMENTATION IN JAVASCRIPT</h3>
+        <h3 class="next">NODE, EXPRESS</h3>
+        <h3 class="next">LARGE JS COMMUNITY</h3>
+    </section>
+
+    <!-- SLIDE #7 -->
+    <section class="slide prism">
+        <h2>GraphQL concepts</h2>
+        <h3 class="next">CLIENT-SPECIFIED DATA</h3>
+        <h3 class="next">HIERARCHICAL</h3>
+        <h3 class="next">STRONG-TYPING</h3>
+        <h3 class="next">VALIDATION</h3>
+        <h3 class="next">INTROSPECTION</h3>
+    </section>
+
+    <!-- SLIDE #8 -->
+    <section class="slide prism">
+        <h3 class="shout">Query document</h3>
+    </section>
+
+    <!-- SLIDE #9 -->
+    <section class="slide prism">
+        <h2>Query document</h2>
+        <h3>GraphQL hello world!</h3>
+        <div class="wrap">
+            <div class="left_col">
+                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            me {
+                                welcome
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="right_col">
+                <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            "data": {
+                                "me" {
+                                    "welcome": "Gitara, siema!"
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #10 -->
+    <section class="slide prism">
+        <h2>Query document</h2>
+        <h3 class="next">OPERATIONS</h3>
+        <ul style="font-size: 15px;">
+            <li class="next">QUERY</li>
         </ul>
     </section>
 
-    <section class="slide">
-        <h2>List Navigation</h2>
-        <ol>
-            <li>Ennui keffiyeh thundercats</li>
-            <li class="next">Jean shorts biodiesel</li>
-            <li class="next">Terry richardson, swag blog</li>
-            <li class="next">Locavore umami vegan helvetica</li>
-            <li class="next">Fingerstache kale chips</li>
-        </ol>
-        <p class="next">Before they sold out master</p>
+    <!-- SLIDE #11 -->
+    <section class="slide prism">
+        <h2>Query document</h2>
+        <h3>QUERY</h3>
+
+        <div class="wrap">
+            <div class="left_col">
+                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;">
+                        query {
+                            me {
+                                loggedIn
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="right_col">
+                <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            "data": {
+                                "me" {
+                                    "loggedIn": false
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
     </section>
 
-    <section class="slide">
-        <h2>Slide Header</h2>
-
-        <p>Echo Park 8-bit sustainable umami deep v Kickstarter. DIY cliche typewriter brunch, Odd Future sriracha pickled aesthetic. Farm-to-table bespoke fingerstache, kale chips umami brunch letterpress.</p>
-        <p>Whatever authentic disrupt, you probably haven't heard of them direct trade mlkshk Etsy. Gluten-free roof party plaid four loko quinoa.</p>
-        <p class="note">Echo Park 8-bit sustainable umami deep v Kickstarter.</p>
+    <!-- SLIDE #12 -->
+    <section class="slide prism">
+        <h2>Query document</h2>
+        <h3>OPERATIONS</h3>
+        <ul style="font-size: 15px;">
+            <li>QUERY</li>
+            <li class="next">MUTATION</li>
+        </ul>
     </section>
 
-    <section class="slide">
-        <h2>Inline Elements</h2>
+    <!-- SLIDE #13 -->
+    <section class="slide prism">
+        <h2>Query document</h2>
+        <h3>MUTATION</h3>
 
-        <p>Retro meh brunch <a href="">aesthetic</a> Cosby sweater Shoreditch. Banksy Tumblr
-            <strong>sriracha</strong>, flexitarian pug chia master cleanse vinyl
-            <em>wayfarers</em> fanny pack bespoke Helvetica <b>roof</b> party. Messenger bag retro cred
-            <i>Portland</i> next level. Yr stumptown Schlitz Carles deep v small batch. Hella sustainable messenger bag,
-            <mark>leggings</mark>
-            skateboard literally<sup>1</sup> bicycle rights H<sub>2</sub>0 mumblecore banh mi DIY VHS. Semiotics four loko street art asymmetrical. Asymmetrical
-            <code>&lt;paleo&gt;</code> you probably haven’t heard of.
-        </p>
-
-        <footer class="footer">
-            <p>Retro meh brunch <a href="">aesthetic</a> Cosby sweater Shoreditch. Banksy Tumblr
-                <strong>sriracha</strong>, flexitarian pug chia master cleanse vinyl
-                <em>wayfarers</em> fanny pack bespoke Helvetica <b>roof</b> party. Messenger bag retro cred
-                <i>Portland</i> next level. Yr stumptown Schlitz Carles deep v small batch. Hella sustainable messenger bag,
-                <mark>leggings</mark>
-                skateboard literally<sup>1</sup> bicycle rights H<sub>2</sub>0 mumblecore banh mi DIY VHS. Semiotics four loko street art asymmetrical. Asymmetrical
-                <code>&lt;paleo&gt;</code> you probably haven’t heard of.
-            </p>
-        </footer>
+        <div class="wrap">
+            <div class="left_col">
+                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;">
+                        mutation {
+                            me {
+                                setLoggedIn
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="right_col">
+                <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            "data": {
+                                "me" {
+                                    "setLoggedIn": true
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
     </section>
 
-    <section class="slide">
-        <h2>Columns</h2>
-        <p class="double">Echo Park 8-bit sustainable umami deep v Kickstarter. DIY cliche typewriter brunch, Odd Future sriracha pickled aesthetic. Farm-to-table bespoke fingerstache, kale chips umami brunch American Apparel letterpress. Whatever authentic disrupt, you probably haven't heard of them direct trade mlkshk Etsy. Gluten-free roof party plaid American Apparel four loko quinoa. Echo Park 8-bit sustainable.</p>
+    <!-- SLIDE #14 -->
+    <section class="slide prism">
+        <h2>Query document</h2>
+        <h3>OPERATIONS</h3>
+        <ul style="font-size: 15px;">
+            <li>QUERY</li>
+            <li>MUTATION</li>
+            <li class="next">FRAGMENT</li>
+        </ul>
     </section>
 
-    <section class="slide">
-        <h2>Quotes</h2>
-        <blockquote>
-            <p>Flannel bicycle rights locavore selfies skateboard. Authentic fanny pack paleo four loko bespoke. Artisan tattooed chia XOXO ennui, lomo disrupt 8-bit art party Tumblr scenester.</p>
-        </blockquote>
-        <figure>
-            <blockquote>
-                <p>Post-ironic fashion axe flexitarian, Tonx narwhal messenger bag Tumblr. Portland gentrify deep v kale chips literally.</p>
-            </blockquote>
-            <figcaption>Yours Truly</figcaption>
-        </figure>
+    <!-- SLIDE #15 -->
+    <section class="slide prism">
+        <h2>Query document</h2>
+        <h3>WITHOUT FRAGMENT</h3>
+
+        <div class="wrap">
+            <div class="left_col">
+                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            user {
+                                id
+                                info {
+                                    loggedIn
+                                    name
+                                }
+                            }
+                            anotherUser {
+                                id
+                                info {
+                                    loggedIn
+                                    name
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="right_col">
+                <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            "data": {
+                                "user" {
+                                    "id": "1",
+                                    "info" {
+                                        "loggedIn": true
+                                        "name": "Bolek"
+                                    }
+                                }
+                                "anotherUser" {
+                                    "id": "2",
+                                    "info" {
+                                        "loggedIn": false
+                                        "name": "Franek"
+                                    }
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
     </section>
 
-    <section class="slide">
-        <h2>Nested Lists</h2>
-        <ol>
-            <li>Literally viral vegan, ugh drinking vinegar photo booth</li>
-            <li>Wes Anderson chillwave Marfa pour-over Etsy banh mi</li>
-            <li>Ethnic polaroid lo-fi iPhone ennui
-                <ul>
-                    <li>Yr wayfarers before they sold out Kickstarter asymmetrical</li>
-                    <li>Irony flexitarian readymade quinoa, kogi bespoke meggings narwhal</li>
-                    <li>Skateboard Etsy twee artisan Echo Park</li>
+    <!-- SLIDE #16 -->
+    <section class="slide prism">
+        <h2>Query document</h2>
+        <h3>WITH FRAGMENT</h3>
+
+        <div class="wrap">
+            <div class="left_col">
+                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;">
+                        query {
+                            user {
+                                ...userFragment
+                            }
+                            anotherUser {
+                                ...userFragment
+                            }
+                        }
+                        fragment userFragment on UserType {
+                            id
+                            info {
+                                loggedIn
+                                name
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="right_col">
+                <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            "data": {
+                                "user" {
+                                    "id": "1",
+                                    "info" {
+                                        "loggedIn": true
+                                        "name": "Bolek"
+                                    }
+                                }
+                                "anotherUser" {
+                                    "id": "2",
+                                    "info" {
+                                        "loggedIn": false
+                                        "name": "Franek"
+                                    }
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #17 -->
+    <section class="slide prism">
+        <h2>Query document</h2>
+
+            <h3>OPERATIONS</h3>
+                <ul style="font-size: 15px;">
+                    <li>QUERY</li>
+                    <li>MUTATION</li>
+                    <li>FRAGMENT</li>
+                    <li class="next">SUBSCRIPTION</li>
                 </ul>
-            </li>
-            <li>Tonx kitsch fingerstache readymade, retro single-origin coffee</li>
-        </ol>
+            <h3 class="next">SELECTION SET</h3>
+            <ul style="font-size: 15px;">
+                <li class="next">FIELDS</li>
+            </ul>
     </section>
 
-    <section class="slide">
-        <h2>Simple Table</h2>
-        <table>
-            <tr>
-                <th scope="col">Gentrify</th>
-                <th>Twee</th>
-                <th>Artisan</th>
-                <th>Banksy</th>
-            </tr>
-            <tr>
-                <th scope="row">Messenger</th>
-                <td>Mixtape</td>
-                <td>Small batch</td>
-                <td>Bicycle rights</td>
-            </tr>
-            <tr>
-                <th scope="row">Meggings</th>
-                <td>Freegan</td>
-                <td>Retro biodiesel</td>
-                <td>Slow-carb</td>
-            </tr>
-            <tr>
-                <th scope="row">Vegan</th>
-                <td>Occupy</td>
-                <td>Normcore</td>
-                <td>Put a bird on it</td>
-            </tr>
-            <tr>
-                <th scope="row">Next level</th>
-                <td>Selfies</td>
-                <td>Sustainable</td>
-                <td>Organic</td>
-            </tr>
-            <tr>
-                <th scope="row">Umami</th>
-                <td>Asymmetrical</td>
-                <td>Keytar</td>
-                <td>Craft beer</td>
-            </tr>
-            <tr>
-                <th scope="row">Biodiesel</th>
-                <td>Haven’t heard</td>
-                <td>Skateboard</td>
-                <td>Farm-to-table</td>
-            </tr>
-        </table>
-    </section>
-
-    <section class="slide">
-        <h2>Striped Table</h2>
-        <table class="striped">
-            <tr>
-                <th scope="col">Gentrify</th>
-                <th>Twee</th>
-                <th>Artisan</th>
-                <th>Banksy</th>
-            </tr>
-            <tr>
-                <th scope="row">Messenger</th>
-                <td>Mixtape</td>
-                <td>Small batch</td>
-                <td>Bicycle rights</td>
-            </tr>
-            <tr>
-                <th scope="row">Meggings</th>
-                <td>Freegan</td>
-                <td>Retro biodiesel</td>
-                <td>Slow-carb</td>
-            </tr>
-            <tr>
-                <th scope="row">Vegan</th>
-                <td>Occupy</td>
-                <td>Normcore</td>
-                <td>Put a bird on it</td>
-            </tr>
-            <tr>
-                <th scope="row">Next level</th>
-                <td>Selfies</td>
-                <td>Sustainable</td>
-                <td>Organic</td>
-            </tr>
-            <tr>
-                <th scope="row">Umami</th>
-                <td>Asymmetrical</td>
-                <td>Keytar</td>
-                <td>Craft beer</td>
-            </tr>
-            <tr>
-                <th scope="row">Biodiesel</th>
-                <td>Haven’t heard</td>
-                <td>Skateboard</td>
-                <td>Farm-to-table</td>
-            </tr>
-        </table>
-    </section>
-
+    <!-- SLIDE #18 -->
     <section class="slide prism">
-        <h2>Listing Slide</h2>
+        <h2>Query document</h2>
+        <h3>FIELDS</h3>
 
-        <pre style="font-size: 45px;" class="language-javascript line-numbers">
-            <code>
-                function wrap(value) {
-                    return function () {
-                        return value;
-                    }
-                }
-
-                function bind(monad, f) {
-                    return f(monad());
-                }
-            </code>
-        </pre>
+        <div class="wrap">
+            <div class="left_col">
+                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            user {
+                                name
+                                age
+                                todos {
+                                    name
+                                    done
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="right_col">
+                <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            "data": {
+                                "user" {
+                                    "name": "Bolek",
+                                    "age": 34,
+                                    "todos" [{
+                                        name: "Clean up desk",
+                                        done: false
+                                    }]
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
     </section>
-
+    
+    <!-- SLIDE #19 -->
     <section class="slide prism">
-        <pre style="font-size: 30px;" class="language-javascript line-numbers">
-            <code>
-                var monad = wrap('cookie');
-                bind(monad, (value) => {
-                    console.info(value);
-                    return wrap(value);
-                });
-                monad = bind(monad, (value) => {
-                    return wrap({ type: value });
-                });
-                bind(monad, (value) => {
-                    console.log(value);
-                    return wrap(value);
-                });
-            </code>
-        </pre>
+        <h2>Query document</h2>
+        <h3>OPERATIONS</h3>
+        <ul style="font-size: 15px;">
+            <li>QUERY</li>
+            <li>MUTATION</li>
+            <li>FRAGMENT</li>
+            <li>SUBSCRIPTION</li>
+        </ul>
+        <h3>SELECTION SET</h3>
+        <ul style="font-size: 15px;">
+            <li>FIELDS</li>
+            <li class="next">ARGUMENTS</li>
+        </ul>
     </section>
 
+    <!-- SLIDE #20 -->
+    <section class="slide prism">
+        <h2>Query document</h2>
+        <h3>ARGUMENTS</h3>
+
+        <div class="wrap">
+            <div class="left_col">
+                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            user(id: "1" // required) {
+                                loggedIn
+                                avatar(width: 200 height: 200)
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="right_col">
+                <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            "data": {
+                                "user" {
+                                    "loggedIn": true,
+                                    "avatar": "/avatar200x200.jpg"
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #21 -->
+    <section class="slide prism">
+        <h2>Query document</h2>
+        <h3>OPERATIONS</h3>
+        <ul style="font-size: 15px;">
+            <li>QUERY</li>
+            <li>MUTATION</li>
+            <li>FRAGMENT</li>
+            <li>SUBSCRIPTION</li>
+        </ul>
+        <h3>SELECTION SET</h3>
+        <ul style="font-size: 15px;">
+            <li>FIELDS</li>
+            <li>ARGUMENTS</li>
+            <li class="next">ALIASES</li>
+        </ul>
+    </section>
+
+    <!-- SLIDE #22 -->
+    <section class="slide prism">
+        <h2>Query document</h2>
+        <h3>ALIASES</h3>
+
+        <div class="wrap">
+            <div class="left_col">
+                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            Franek: user(id: "1") {
+                                id
+                                info {
+                                    loggedIn
+                                    name
+                                }
+                            }
+                            Bolek: user(id: "2") {
+                                id
+                                info {
+                                    loggedIn
+                                    name
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="right_col">
+                <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            "data": {
+                                "Bolek" {
+                                    "id": "1",
+                                    "info" {
+                                        "loggedIn": true
+                                        "name": "Bolek"
+                                    }
+                                }
+                                "Franek" {
+                                    "id": "2",
+                                    "info" {
+                                        "loggedIn": false
+                                        "name": "Franek"
+                                    }
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #23 -->
+    <section class="slide prism">
+        <h2>Query document</h2>
+        <h3>OPERATIONS</h3>
+        <ul style="font-size: 15px;">
+            <li>QUERY</li>
+            <li>MUTATION</li>
+            <li>FRAGMENT</li>
+            <li>SUBSCRIPTION</li>
+        </ul>
+        <h3>SELECTION SET</h3>
+        <ul style="font-size: 15px;">
+            <li>FIELDS</li>
+            <li>ARGUMENTS</li>
+            <li>ALIASES</li>
+            <li class="next">VARIABLES</li>
+        </ul>
+    </section>
+
+    <!-- SLIDE #24 -->
+    <section class="slide prism">
+        <h2>Query document</h2>
+        <h3>VARIABLES</h3>
+
+        <div class="wrap">
+            <div class="left_col">
+                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;">
+                        query ($id: !String) {
+                            user (id: $id) {
+                                name
+                                loggedIn
+                            }
+                        }
+                    </code>
+                </pre>
+                <div class="next" style="margin-top: 100px;border-top: medium solid #eee;">
+                    <span>JSON:</span>
+                    <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                        <code style="width: 100%;">
+                            {
+                                id: "1"
+                            }
+                        </code>
+                    </pre>
+                </div>
+            </div>
+            <div class="right_col">
+                <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            "data": {
+                                "user" {
+                                    "name": "Jolo",
+                                    "loggedIn": true
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #25 -->
+    <section class="slide prism">
+        <h2>Query document</h2>
+        <h3>OPERATIONS</h3>
+        <ul style="font-size: 15px;">
+            <li>QUERY</li>
+            <li>MUTATION</li>
+            <li>FRAGMENT</li>
+            <li>SUBSCRIPTION</li>
+        </ul>
+        <h3>SELECTION SET</h3>
+        <ul style="font-size: 15px;">
+            <li>FIELDS</li>
+            <li>ARGUMENTS</li>
+            <li>ALIASES</li>
+            <li>VARIABLES</li>
+            <li class="next">DIRECTIVES</li>
+        </ul>
+    </section>
+
+    <!-- SLIDE #26 -->
+    <section class="slide prism">
+        <h2>Query document</h2>
+        <h3>DIRECTIVES</h3>
+
+        <div class="wrap">
+            <div class="left_col">
+                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;">
+                        query ($noName: Boolean $logged: Boolean) {
+                            user {
+                                id
+                                name @skip(if: $noName)
+                                loggedIn $include(if: $logged)
+                            }
+                        }
+                    </code>
+                </pre>
+                <div class="next" style="margin-top: 100px;border-top: medium solid #eee;">
+                    <span>JSON:</span>
+                    <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                        <code style="width: 100%;">
+                            {
+                                "noName": true,
+                                "logged": true
+                            }
+                        </code>
+                    </pre>
+                </div>
+            </div>
+            <div class="right_col">
+                <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            "data": {
+                                "user" {
+                                    "id": "1",
+                                    "loggedIn": true
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #27 -->
+    <section class="slide prism">
+        <h1 class="shout">Type system</h1>
+    </section>
+
+    <!-- SLIDE #28 -->
+    <section class="slide prism">
+        <h2>Type system</h2>
+        <div class="wrap">
+            <ul>
+                <div class="left_col">
+                    <h3 class="next">SCALARS</h3>
+                    <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                        <code style="width: 100%;">
+                            Int => 37
+                            Float => 3.14
+                            String => "Ninja!"
+                            Boolean => true
+                            ID => "d2#93^m8#d2023#23"
+                        </code>
+                    </pre>
+                    <h3 class="next">ENUMS</h3>
+                    <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                        <code style="width: 100%;">
+                            enum NUMBERS {
+                              ONE
+                              TWO
+                              THREE
+                            }
+                        </code>
+                    </pre>
+                </div>
+                <div class="right_col no_border">
+                    <h3 class="next">NON-NULL</h3>
+                    <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                        <code style="width: 100%;">
+                            !Int => 37 // coerce to non-empty value
+                        </code>
+                    </pre>
+                    <h3 class="next">LISTS</h3>
+                    <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                        <code style="width: 100%;">
+                            [String] => ["apple", "orange"]
+                        </code>
+                    </pre>
+                    <h3 class="next">OBJECTS</h3>
+                    <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                        <code style="width: 100%;">
+                            type UserType {
+                                id: String!
+                                name: String
+                                loggedIn: Boolean
+                            }
+                        </code>
+                    </pre>
+                </div>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE #29 -->
+    <section class="slide prism">
+        <h2>Type system</h2>
+        <div class="wrap">
+            <ul>
+                <div class="left_col">
+                    <h3>INTERFACES</h3>
+                    <pre style="font-size: 16px;width: 100%;" class="next language-javascript">
+                        <code style="width: 100%;">
+                            interface User {
+                                id: ID!
+                            }
+                            type Player implements User {
+                                id: ID!
+                                nick: String!
+                            }
+                            type Admin implements User {
+                                id: ID!
+                                secrets: [String!]
+                            }
+                        </code>
+                    </pre>
+                    <h3 class="next">UNIONS</h3>
+                    <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                        <code style="width: 100%;">
+                            union Fruits = Apple | Orange | Plum
+                        </code>
+                    </pre>
+                </div>
+                <div class="right_col no_border">
+
+                    <h3 class="next">INPUT OBJECTS</h3>
+                    <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                        <code style="width: 100%;">
+                            input UserInput {
+                              id: ID!
+                              visible: Boolean
+                            }
+                        </code>
+                    </pre>
+
+                    <h3 class="next">INPUT OBJECTS USAGE EXAMPLE</h3>
+                    <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                        <code style="width: 100%;">
+                            // JSON: { id: "1", visible: true }
+                            mutation ($input: UserInput!) {
+                              logUser(input: $input) {
+                                id
+                                loggedIn
+                              }
+                            }
+                        </code>
+                    </pre>
+                </div>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE #30 -->
+    <section class="slide prism">
+        <h1 class="shout">VALIDATION</h1>
+    </section>
+
+    <!-- SLIDE #31 -->
+    <section class="slide prism">
+        <h2>VALIDATION</h2>
+        <h3 class="next">FIELD SELECTION VALIDATION</h3>
+    </section>
+
+    <!-- SLIDE #32 -->
+    <section class="slide prism">
+        <h2>VALIDATION</h2>
+        <h3>FIELD SELECTION VALIDATION</h3>
+
+        <div class="wrap">
+            <div class="left_col">
+                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            me {
+                                xyz
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="right_col">
+                <pre style="font-size: 18px;width: 100%;" class="next language-javascript">
+                    <code style="width: 100%;">
+                        {
+                          "errors": [
+                            {
+                              "message":
+                        "Cannot query field \"xyz\" on type \"me\".",
+                              "locations": [
+                                {
+                                  "line": 3,
+                                  "column": 5
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #33 -->
+    <section class="slide prism">
+        <h2>VALIDATION</h2>
+        <h3>FIELD SELECTION VALIDATION</h3>
+
+        <div class="wrap">
+            <div class="left_col">
+                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            me
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="right_col">
+                <pre style="font-size: 18px;width: 100%;" class="next language-javascript">
+                    <code style="width: 100%;">
+                        {
+                          "errors": [
+                            {
+                              "message": "Field \"me\" of type
+                                \"User\" must have
+                                a selection of subfields.
+                                Did you mean \"me { ... }\"?",
+                              "locations": [
+                                {
+                                  "line": 3,
+                                  "column": 3
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #34 -->
+    <section class="slide prism">
+        <h2>VALIDATION</h2>
+        <h3>FIELD SELECTION VALIDATION</h3>
+
+        <div class="wrap">
+            <div class="left_col">
+                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            me {
+                                id {
+                                    type
+                                    value
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="right_col">
+                <pre style="font-size: 18px;width: 100%;" class="next language-javascript">
+                    <code style="width: 100%;">
+                        {
+                          "errors": [
+                            {
+                              "message": "Field \"id\"
+                                must not have a selection
+                                since type \"ID!\" has no subfields.",
+                              "locations": [
+                                {
+                                  "line": 5,
+                                  "column": 10
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #35 -->
+    <section class="slide prism">
+        <h2>VALIDATION</h2>
+        <h3>FIELD SELECTION VALIDATION</h3>
+        <h3 class="next">ARGUMENTS VALIDATION</h3>
+    </section>
+
+    <!-- SLIDE #36 -->
+    <section class="slide prism">
+        <h2>VALIDATION</h2>
+        <h3>ARGUMENTS VALIDATION</h3>
+
+        <div class="wrap">
+            <div class="left_col">
+                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;">
+                        {
+                            user {
+                                name
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="right_col">
+                <pre style="font-size: 18px;width: 100%;" class="next language-javascript">
+                    <code style="width: 100%;">
+                        {
+                          "errors": [
+                            {
+                              "message": "Field \"user\"
+                                        argument \"id\" of type \"ID!\"
+                                        is required but not provided.",
+                              "locations": [
+                                {
+                                  "line": 2,
+                                  "column": 3
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #37 -->
+    <section class="slide prism">
+        <h2>VALIDATION</h2>
+        <h3>FIELD SELECTION VALIDATION</h3>
+        <h3>ARGUMENTS VALIDATION</h3>
+        <h3 class="next">FINE-GRAINED VALIDATION WITH CUSTOM SCALAR TYPES</h3>
+    </section>
+
+    <!-- SLIDE #38 -->
+    <section class="slide prism">
+        <h2>VALIDATION</h2>
+        <h3>FINE-GRAINED VALIDATION WITH CUSTOM SCALAR TYPES</h3>
+
+        <div class="wrap">
+            <div class="left_col">
+                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;">
+                        query ($email: !EmailType $name: !String) {
+                            addUser (email: $email name: $name) {
+                                name
+                                email
+                            }
+                        }
+                    </code>
+                </pre>
+                <div class="next" style="margin-top: 100px;border-top: medium solid #eee;">
+                    <span>JSON:</span>
+                    <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                        <code style="width: 100%;">
+                            {
+                                name: "Brajanek",
+                                email: "@brajanek@RLZ"
+                            }
+                        </code>
+                    </pre>
+                </div>
+            </div>
+            <div class="right_col">
+                <pre style="font-size: 18px;width: 100%;" class="next language-javascript">
+                    <code style="width: 100%;">
+                        {
+                          "errors": [
+                            {
+                              "message": "Invalid email address.",
+                              "locations": [
+                                {
+                                  "line": 2,
+                                  "column": 3
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #39 -->
+    <section class="slide prism">
+        <h2>VALIDATION</h2>
+        <h3>FIELD SELECTION VALIDATION</h3>
+        <h3>ARGUMENTS VALIDATION</h3>
+        <h3>FINE-GRAINED VALIDATION WITH CUSTOM SCALAR TYPES</h3>
+        <h3 class="next">FRAGMENTS RECURSION VALIDATION</h3>
+    </section>
+
+    <!-- SLIDE #40 -->
+    <section class="slide prism">
+        <h2>VALIDATION</h2>
+        <h3>FRAGMENTS RECURSION VALIDATION</h3>
+
+        <div class="wrap">
+            <div class="left_col">
+                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                    <code style="width: 100%;">
+                        {
+                          me {
+                            ...idAndNameAndFriends
+                          }
+                        }
+                        
+                        fragment idAndNameAndFriends on User {
+                          id
+                          name
+                          friends {
+                            ...idAndNameAndFriends
+                          }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="right_col">
+                <pre style="font-size: 18px;width: 100%;" class="next language-javascript">
+                    <code style="width: 100%;">
+                        {
+                          "errors": [
+                            {
+                              "message": "Cannot spread fragment
+                                \"NameAndAppearancesAndFriends\"
+                                within itself.",
+                              "locations": [
+                                {
+                                  "line": 11,
+                                  "column": 5
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE #41 -->
+    <section class="slide prism">
+        <h2>VALIDATION</h2>
+        <h3>FIELD SELECTION VALIDATION</h3>
+        <h3>ARGUMENTS VALIDATION</h3>
+        <h3>FINE-GRAINED VALIDATION WITH CUSTOM SCALAR TYPES</h3>
+        <h3>FRAGMENTS RECURSION VALIDATION</h3>
+        <h3 class="next">...AND MUCH MORE</h3>
+    </section>
+
+    <!-- SLIDE #42 -->
     <section class="slide">
-        <h2 class="shout"><a href="">Linked</a> Shout</h2>
+        <h1 class="shout">INTROSPECTION</h1>
     </section>
 
+    <!-- SLIDE #43 -->
+    <section class="slide prism">
+        <h2>INTROSPECTION</h2>
+        <h3 class="next">TYPE SYSTEM GENERATE DOCUMENTATION</h3>
+        <h3 class="next">EXPOSES SERVER SIDE POSSIBILITIES</h3>
+        <h3 class="next">FIELDS DEPRECATION INFO</h3>
+        <h3 class="next">QUERY DOCUMENT CODE COMPLETION</h3>
+        <h3 class="next">... AND LIVE VALIDATION</h3>
+    </section>
+
+    <!-- SLIDE #44 -->
     <section class="slide">
-        <h2 class="shout grow">Effect: Growing Shout</h2>
+        <h1 class="shout">SECURITY</h1>
     </section>
 
+    <!-- SLIDE #45 -->
+    <section class="slide prism">
+        <h2>SECURITY</h2>
+        <h3 class="next">QUERY DOCUMENT DEPTH</h3>
+        <h3 class="next">QUERY COMPLICITY</h3>
+        <h3 class="next">QUERYING EXECUTION TIME LIMIT</h3>
+    </section>
+
+    <!-- SLIDE #46 -->
     <section class="slide">
-        <h2 class="shout shrink">Effect: Shrinking Shout</h2>
+        <h1 class="shout">SUMMARY<br />PROS AND CONS</h1>
     </section>
 
+    <!-- SLIDE #47 -->
+    <section class="slide prism">
+        <h2>PROS</h2>
+        <h3 class="next">SINGLE DATA FETCHING RUN</h3>
+        <h3 class="next">NO OVERFETCHING</h3>
+        <h3 class="next">NO UNDERETCHING</h3>
+        <h3 class="next">HUMAN-READABLE QUERIES</h3>
+        <h3 class="next">FAST GROWING COMMUNITY AND FACEBOOK FEED BACK</h3>
+        <h3 class="next">NO LANGUAGE BOUNDARY</h3>
+    </section>
+
+    <!-- SLIDE #48 -->
+    <section class="slide prism">
+        <h2>CONS</h2>
+        <h3 class="next">STILL EARLY STAGE</h3>
+        <h3 class="next">ANOTHER LANGUAGE/TECHNOLOGY</h3>
+        <h3 class="next">ENTRY THRESHOLD</h3>
+    </section>
+
+    <!-- SLIDE #49 -->
     <section class="slide">
-        <figure>
-            <img class="cover" src="vendors/shower-ribbon/pictures/exact.png" alt="">
-            <figcaption class="white">Copyright © 2016 <a href="">Yours Truly</a>, Famous Inc.</figcaption>
-        </figure>
+        <h2>RESOURCES</h2>
+        <ul>
+            <li>http://graphql.org/</li>
+            <li>https://facebook.github.io/graphql/ - official reference</li>
+            <li>https://github.com/graphql/</li>
+            <li>https://github.com/G3F4/express-graphql-workshop</li>
+        </ul>
     </section>
 
+    <!-- SLIDE #50 -->
     <section class="slide">
-        <img class="cover" src="vendors/shower-ribbon/pictures/tall.png" alt="">
-    </section>
-
-    <section class="slide">
-        <img class="cover" src="vendors/shower-ribbon/pictures/wide.png" alt="">
-    </section>
-
-    <section class="slide white">
-        <img class="place top left" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place top" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place top right" src="vendors/shower-ribbon/pictures/square.png" alt="">
-
-        <img class="place left" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place right" src="vendors/shower-ribbon/pictures/square.png" alt="">
-
-        <img class="place bottom left" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place bottom" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place bottom right" src="vendors/shower-ribbon/pictures/square.png" alt="">
-    </section>
-
-    <section class="slide" data-timing="00:03">
-        <h3 class="shout">Automatic switch slide after <strong>3 secs</strong> ...</h3>
-    </section>
-
-    <section class="slide">
-        <h3 class="shout">See you next month at WarsawJS</h3>
+        <h1 class="shout">THANKS FOR<br />LISTENING. QUESTIONS?</h1>
     </section>
 
     <div class="progress"></div>
