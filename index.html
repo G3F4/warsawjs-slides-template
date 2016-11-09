@@ -38,6 +38,9 @@
         .slide .shout {
             font-size: 140px;
         }
+        .lang-logo {
+            max-width: 200px;
+        }
     </style>
 </head>
 <body class="shower list">
@@ -102,15 +105,29 @@
         <h3 class="next">QUERY LANGUAGE FOR DATABASE</h3>
         <h3 class="next">LIBRARY</h3>
         <h3 class="next">LANGUAGE SPECIFIC</h3>
-        <p class="next">EXAMPLES</p>
+        <div class="next">
+            <div>
+                <img class="lang-logo" src="pictures/logo/scala.jpeg">
+                <img class="lang-logo" src="pictures/logo/php.gif">
+                <img class="lang-logo" src="pictures/logo/java.png">
+                <img class="lang-logo" src="pictures/logo/lua.png">
+            </div>
+            <div>
+                <img class="lang-logo" src="pictures/logo/ruby.png">
+                <img class="lang-logo" src="pictures/logo/python.png">
+                <img class="lang-logo" src="pictures/logo/go.png">
+                <img class="lang-logo"style="height: 100px" src="pictures/logo/c++.png">
+                <span>... AND MORE</span>
+            </div>
+        </div>
     </section>
 
     <!-- SLIDE #5 -->
     <section class="slide prism">
         <h2>What GraphQL <b>is</b></h2>
         <h3 class="next">IDEA</h3>
-        <h3 class="next">QUERY LANGUAGE FOR APPLICATION</h3>
         <h3 class="next">LAYER BETWEEN CLIENT AND SERVER</h3>
+        <h3 class="next">QUERY LANGUAGE FOR APPLICATION</h3>
         <h3 class="next">TYPE SYSTEM</h3>
     </section>
 
@@ -473,12 +490,12 @@
                 <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
                     <code style="width: 100%;">
                         {
-                            "data": {
-                                "user" {
-                                    "loggedIn": true,
-                                    "avatar": "/avatar200x200.jpg"
-                                }
+                          "data": {
+                            "user" {
+                            "loggedIn": true,
+                            "avatar": "/avatar200x200.jpg"
                             }
+                          }
                         }
                     </code>
                 </pre>
@@ -650,7 +667,7 @@
 
         <div class="wrap">
             <div class="left_col">
-                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                <pre style="font-size: 18px;width: 100%;" class="language-javascript">
                     <code style="width: 100%;">
                         query ($noName: Boolean $logged: Boolean) {
                             user {
@@ -724,7 +741,7 @@
                 </div>
                 <div class="right_col no_border">
                     <h3 class="next">NON-NULL</h3>
-                    <pre style="font-size: 20px;width: 100%;" class="next language-javascript">
+                    <pre style="font-size: 18px;width: 100%;" class="next language-javascript">
                         <code style="width: 100%;">
                             !Int => 37 // coerce to non-empty value
                         </code>
@@ -837,7 +854,7 @@
                 </pre>
             </div>
             <div class="right_col">
-                <pre style="font-size: 18px;width: 100%;" class="next language-javascript">
+                <pre style="font-size: 16px;width: 100%;" class="next language-javascript">
                     <code style="width: 100%;">
                         {
                           "errors": [
@@ -920,7 +937,7 @@
                 </pre>
             </div>
             <div class="right_col">
-                <pre style="font-size: 18px;width: 100%;" class="next language-javascript">
+                <pre style="font-size: 16px;width: 100%;" class="next language-javascript">
                     <code style="width: 100%;">
                         {
                           "errors": [
@@ -968,7 +985,7 @@
                 </pre>
             </div>
             <div class="right_col">
-                <pre style="font-size: 18px;width: 100%;" class="next language-javascript">
+                <pre style="font-size: 16px;width: 100%;" class="next language-javascript">
                     <code style="width: 100%;">
                         {
                           "errors": [
@@ -1006,7 +1023,7 @@
 
         <div class="wrap">
             <div class="left_col">
-                <pre style="font-size: 20px;width: 100%;" class="language-javascript">
+                <pre style="font-size: 18px;width: 100%;" class="language-javascript">
                     <code style="width: 100%;">
                         query ($email: !EmailType $name: !String) {
                             addUser (email: $email name: $name) {
