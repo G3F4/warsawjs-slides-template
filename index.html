@@ -41,6 +41,9 @@
         .lang-logo {
             max-width: 200px;
         }
+        .focus {
+            font-weight: bolder;
+        }
     </style>
 </head>
 <body class="shower list">
@@ -198,7 +201,7 @@
         <h2>Query document</h2>
         <h3 class="next">OPERATIONS</h3>
         <ul style="font-size: 15px;">
-            <li class="next">QUERY</li>
+            <li class="next focus">QUERY</li>
         </ul>
     </section>
 
@@ -241,7 +244,7 @@
         <h3>OPERATIONS</h3>
         <ul style="font-size: 15px;">
             <li>QUERY</li>
-            <li class="next">MUTATION</li>
+            <li class="focus">MUTATION</li>
         </ul>
     </section>
 
@@ -255,8 +258,8 @@
                 <pre style="font-size: 20px;width: 100%;" class="language-javascript">
                     <code style="width: 100%;">
                         mutation {
-                            me {
-                                setLoggedIn
+                            setLoggedIn {
+                                loggedIn
                             }
                         }
                     </code>
@@ -267,8 +270,8 @@
                     <code style="width: 100%;">
                         {
                             "data": {
-                                "me" {
-                                    "setLoggedIn": true
+                                setLoggedIn {
+                                    loggedIn: true
                                 }
                             }
                         }
@@ -285,7 +288,7 @@
         <ul style="font-size: 15px;">
             <li>QUERY</li>
             <li>MUTATION</li>
-            <li class="next">FRAGMENT</li>
+            <li class="focus">FRAGMENT</li>
         </ul>
     </section>
 
@@ -411,7 +414,7 @@
                 </ul>
             <h3 class="next">SELECTION SET</h3>
             <ul style="font-size: 15px;">
-                <li class="next">FIELDS</li>
+                <li class="next focus">FIELDS</li>
             </ul>
     </section>
 
@@ -471,7 +474,7 @@
         <h3>SELECTION SET</h3>
         <ul style="font-size: 15px;">
             <li>FIELDS</li>
-            <li class="next">ARGUMENTS</li>
+            <li class="focus">ARGUMENTS</li>
         </ul>
     </section>
 
@@ -524,7 +527,7 @@
         <ul style="font-size: 15px;">
             <li>FIELDS</li>
             <li>ARGUMENTS</li>
-            <li class="next">ALIASES</li>
+            <li class="focus">ALIASES</li>
         </ul>
     </section>
 
@@ -598,7 +601,7 @@
             <li>FIELDS</li>
             <li>ARGUMENTS</li>
             <li>ALIASES</li>
-            <li class="next">VARIABLES</li>
+            <li class="focus">VARIABLES</li>
         </ul>
     </section>
 
@@ -663,7 +666,7 @@
             <li>ARGUMENTS</li>
             <li>ALIASES</li>
             <li>VARIABLES</li>
-            <li class="next">DIRECTIVES</li>
+            <li class="focus">DIRECTIVES</li>
         </ul>
     </section>
 
@@ -840,7 +843,7 @@
     <!-- SLIDE #31 -->
     <section class="slide prism">
         <h2>VALIDATION</h2>
-        <h3 class="next">FIELD SELECTION VALIDATION</h3>
+        <h3 class="next focus">FIELD SELECTION VALIDATION</h3>
     </section>
 
     <!-- SLIDE #32 -->
@@ -971,7 +974,7 @@
     <section class="slide prism">
         <h2>VALIDATION</h2>
         <h3>FIELD SELECTION VALIDATION</h3>
-        <h3 class="next">ARGUMENTS VALIDATION</h3>
+        <h3 class="focus">ARGUMENTS VALIDATION</h3>
     </section>
 
     <!-- SLIDE #36 -->
@@ -1020,7 +1023,7 @@
         <h2>VALIDATION</h2>
         <h3>FIELD SELECTION VALIDATION</h3>
         <h3>ARGUMENTS VALIDATION</h3>
-        <h3 class="next">FINE-GRAINED VALIDATION WITH CUSTOM SCALAR TYPES</h3>
+        <h3 class="focus">FINE-GRAINED VALIDATION WITH CUSTOM SCALAR TYPES</h3>
     </section>
 
     <!-- SLIDE #38 -->
@@ -1080,7 +1083,7 @@
         <h3>FIELD SELECTION VALIDATION</h3>
         <h3>ARGUMENTS VALIDATION</h3>
         <h3>FINE-GRAINED VALIDATION WITH CUSTOM SCALAR TYPES</h3>
-        <h3 class="next">FRAGMENTS RECURSION VALIDATION</h3>
+        <h3 class="focus">FRAGMENTS RECURSION VALIDATION</h3>
     </section>
 
     <!-- SLIDE #40 -->
@@ -1139,7 +1142,7 @@
         <h3>ARGUMENTS VALIDATION</h3>
         <h3>FINE-GRAINED VALIDATION WITH CUSTOM SCALAR TYPES</h3>
         <h3>FRAGMENTS RECURSION VALIDATION</h3>
-        <h3 class="next">...AND MUCH MORE</h3>
+        <h3 class="focus">...AND MUCH MORE</h3>
     </section>
 
     <!-- SLIDE #42 -->
